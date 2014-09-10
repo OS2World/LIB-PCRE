@@ -1,0 +1,32 @@
+PCRE lib 4.3/OS2 PORT.
+
+1. Description
+This is PCRE 4.3 library compliled with VAC 3.08. It does not require any 
+external runtime :)
+Compiled with UTF8 support. All test seems to run Ok.
+
+2. Files
+pcre.dll     - OS/2 PCRE DLL.
+pcre.lib     - Import file for the pcre.dll.
+libpcre.lib  - PCRE LIB static version.
+pcre.h       - Header for using PCRE in your programs.
+pcregrep.exe,
+pcretest.exe - Test program and pcre GREP from original package.
+src/*        - sources for recompiling PCRE lib. See src/readme.txt.
+doc/*        - Original PCRE documentation in HTML format.
+
+3. Locale notes.
+If you want to use your locale in PCRE you need to add code like:
+----
+setlocale(LC_CTYPE,"ru_ru.ibm-866");
+tables = pcre_maketables();
+re = pcre_compile((char *)p, options, &error, &erroroffset, tables);
+----
+I tested this with russian and ukrianian locale and it seems to work fine. See
+OS/2 toolkit for more information about OS/2 setlocale() implementation.
+
+4. An author
+Author of this port is Alex Samorukov, samm@os2.ru.
+
+5. Thanks to
+Philip Hazel <ph10@cam.ac.uk> for PCRE library :)
